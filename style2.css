@@ -5,13 +5,13 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
 }
 
 /* 달력 컨테이너 설정 */
 .container {
     width: 90%;
-    max-width: 400px;
+    max-width: 250px;
     color: #f4f4f4;
     background-color: #005C78;
     padding-top: 10px;
@@ -49,11 +49,11 @@ body {
 }
 
 .curyear {
-    
+    font-size: 12px;
 }
 
 .monthname {
-    font-size: 36px;
+    font-size: 24px;
     padding-top: 10px;
 }
 
@@ -67,9 +67,9 @@ body {
 
 .btn img {
     cursor: pointer;
-    width: 20px;
-    height: 20px;
-    padding: 15.72px;
+    width: 14px;
+    height: 14px;
+    padding: 9.07px;
 }
 
 .curday {
@@ -77,14 +77,14 @@ body {
 }
 
 table {
-    font-size: 14px;
+    font-size: 12px;
     width: 90%;
     border-collapse: collapse;
 }
 
 .weeks td {
-    height: calc(360px/7);
-    width: calc(360px/7);
+    height: calc(225px/7);
+    width: calc(225px/7);
     font-weight: normal;
     text-align: center;
     padding: 0 0;
@@ -92,9 +92,9 @@ table {
 }
 
 .days td {
-    height: calc(360px/7);
-    width: calc(360px/7);
-    font-weight: 600;
+    height: calc(225px/7);
+    width: calc(225px/7);
+    font-weight: normal;
     padding: 0 0;
     text-align: center;
     cursor: pointer;
@@ -121,5 +121,6 @@ td {
 }
 
 .next-date, .prev-date {
+    font-weight: normal;
     opacity: 0.7;
 }
