@@ -6,20 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <style>
-        /* 기본 바디 설정 */
+       /* 기본 바디 설정 */
 body {
     font-family: 'Nanum Gothic', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 5;
     background-color: #ffffff;
 }
 
 /* 달력 컨테이너 설정 */
 .container {
     width: 90%;
-    max-width: 250px;
+    max-width: 200px;
     color: #f4f4f4;
     background-color: #005C78;
     padding-top: 10px;
@@ -77,7 +74,7 @@ body {
     cursor: pointer;
     width: 14px;
     height: 14px;
-    padding: 9.07px;
+    padding: 5.85px;
 }
 
 .curday {
@@ -91,8 +88,8 @@ table {
 }
 
 .weeks td {
-    height: calc(225px/7);
-    width: calc(225px/7);
+    height: calc(180px/7);
+    width: calc(180px/7);
     font-weight: normal;
     text-align: center;
     padding: 0 0;
@@ -100,8 +97,8 @@ table {
 }
 
 .days td {
-    height: calc(225px/7);
-    width: calc(225px/7);
+    height: calc(180px/7);
+    width: calc(180px/7);
     font-weight: normal;
     padding: 0 0;
     text-align: center;
@@ -115,7 +112,6 @@ td {
 .today {
     color: #005C78;
     background-color: #f4f4f4;
-    font-weight: 600px;
     border-radius: 100%;
 }
 
