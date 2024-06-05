@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6f27ab031e.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+    const date = new Date();
+
+    function Calendar() {
+        date.setDate(1);
+        const firstDayIndex = date.getDay();
+        const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
+        const nextDays = 7 - lastDayIndex - 1;
+        const monthNames = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+        const curMonthElem = document.querySelector('.monthname');
+//        const curDayElem = document.querySelector('.curday');
+        const monthDaysElem = document.querySelector('.days');
+
+        const currentMonth = date.getMonth();
+        const currentYear = date.getFullYear();
+        const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const prevLastDay = new Date(currentYear, currentMonth, 0).getDate();
+
+        let calMonth = (currentMonth + 1).toString().padStart(2, '0');
+        curMonthElem.innerHTML = monthNames[currentMonth];
+//        curDayElem.innerHTML = `${currentYear}-${calMonth}-${new Date().getDate()}`;
+
+        let days = "";
+        let cnt = 0;
+        const arrDays = [];
+
+        const today = new Date();
+        const isToday = (day, month, year) => day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+
+        // Function to generate day cells
+        const generateDayCells = (start, end, className, month, year) => {
+            for (let i = start; i <= end; i++) {
+                if (cnt % 7 === 0) { days += "<tr class='days'>"; }
+                const todayClass = isToday(i, month, year) ? 'today' : '';
+                days += `<td class="${className} ${todayClass}">${i}</td>`;
+                cnt++;
+                if (cnt % 7 === 0) { days += "</tr>"; }
+                arrDays.push(i);
+            }
+        };
+
+        // Previous month's days
+        generateDayCells(prevLastDay - firstDayIndex + 1, prevLastDay, 'prev-date', currentMonth - 1, currentYear);
+
+        // Current month's days
+        generateDayCells(1, lastDay, '', currentMonth, currentYear);
+
+        // Next month's days
+        generateDayCells(1, nextDays, 'next-date', currentMonth + 1, currentYear);
+
+        monthDaysElem.innerHTML = days;
+    }
+
+    const lastBtn = document.getElementById('lastbtn');
+    const nextBtn = document.getElementById('nextbtn');
+
+    lastBtn.addEventListener('click', () => {
+        date.setMonth(date.getMonth() - 1);
+        Calendar();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        date.setMonth(date.getMonth() + 1);
+        Calendar();
+    });
+
+    Calendar();
+});
+    </script>
+    <style>
+        /* 기본 바디 설정 */
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* 달력 컨테이너 설정 */
+.container {
+    width: 90%;
+    max-width: 400px;
+    color: #f4f4f4;
+    background-color: #005C78;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #005C78;
+}
+
+.month {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: #005C78;
+    color: #f4f4f4;
+}
+
+.curdate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.curmonth {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.curyear {
+    
+}
+
+.monthname {
+    font-size: 36px;
+    padding-top: 10px;
+}
+
+.btn {
+    width: 27%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: auto;
+}
+
+.btn img {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    padding: 15.72px;
+}
+
+.curday {
+    font-size: 10px;
+}
+
+table {
+    font-size: 14px;
+    width: 90%;
+    border-collapse: collapse;
+}
+
+.weeks td {
+    height: calc(360px/7);
+    width: calc(360px/7);
+    font-weight: normal;
+    text-align: center;
+    padding: 0 0;
+    border-top: 1px solid #f4f4f4;
+}
+
+.days td {
+    height: calc(360px/7);
+    width: calc(360px/7);
+    font-weight: 600;
+    padding: 0 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+td {
+    width: 14.28%;
+}
+
+.today {
+    color: #005C78;
+    background-color: #f4f4f4;
+    font-weight: 600px;
+    border-radius: 100%;
+}
+
+/* 주말 색상 설정 */
+.weeks td:first-child, .days td:first-child {
+    color: #e74c3c;
+}
+
+.weeks td:last-child, .days td:last-child {
+    color: #3498db;
+}
+
+.next-date, .prev-date {
+    opacity: 0.7;
+}
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="calendar">
+            <div class="month">
+                <div class="curdate">
+                    <div class="curmonth">
+                        <span class="curyear">2024</span>
+                        <span class="monthname"></span>
+                    </div>
+                    <div class="btn">
+                        <img src="./up icon.png" alt="next" id="nextbtn">
+                        <img src="./down icon.png" alt="last" id="lastbtn">
+                    </div>
+                </div>
+            </div>
+            <table>
+                <tbody>
+                    <tr class="weeks">
+                        <td style="color:#e74c3c;">S</td>
+                        <td>M</td>
+                        <td>T</td>
+                        <td>W</td>
+                        <td>T</td>
+                        <td>F</td>
+                        <td style="color:#3498db;">S</td>
+                    </tr>
+                </tbody>
+                <tbody class="days">
+                </tbody>
+            </table>
+        </div>    
+    </div>
+</body>
+</html>

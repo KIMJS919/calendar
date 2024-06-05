@@ -1,0 +1,125 @@
+/* 기본 바디 설정 */
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* 달력 컨테이너 설정 */
+.container {
+    width: 90%;
+    max-width: 400px;
+    color: #f4f4f4;
+    background-color: #005C78;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #005C78;
+}
+
+.month {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: #005C78;
+    color: #f4f4f4;
+}
+
+.curdate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.curmonth {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.curyear {
+    
+}
+
+.monthname {
+    font-size: 36px;
+    padding-top: 10px;
+}
+
+.btn {
+    width: 27%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: auto;
+}
+
+.btn img {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    padding: 15.72px;
+}
+
+.curday {
+    font-size: 10px;
+}
+
+table {
+    font-size: 14px;
+    width: 90%;
+    border-collapse: collapse;
+}
+
+.weeks td {
+    height: calc(360px/7);
+    width: calc(360px/7);
+    font-weight: normal;
+    text-align: center;
+    padding: 0 0;
+    border-top: 1px solid #f4f4f4;
+}
+
+.days td {
+    height: calc(360px/7);
+    width: calc(360px/7);
+    font-weight: 600;
+    padding: 0 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+td {
+    width: 14.28%;
+}
+
+.today {
+    color: #005C78;
+    background-color: #f4f4f4;
+    font-weight: 600px;
+    border-radius: 100%;
+}
+
+/* 주말 색상 설정 */
+.weeks td:first-child, .days td:first-child {
+    color: #e74c3c;
+}
+
+.weeks td:last-child, .days td:last-child {
+    color: #3498db;
+}
+
+.next-date, .prev-date {
+    opacity: 0.7;
+}
